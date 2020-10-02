@@ -7,6 +7,35 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <div>
+        <div id="app"></div>
+        <button @click="add" id="addBtn">add</button>
+        <script src="reactive.js"></script>
+        <script>
+            const app = document.getElementById('app')
+            const addBtn = document.getElementById('addBtn')
+
+            const obj = {
+                name: 'app',
+                count: 1,
+                o: { val: 1 }
+            }
+
+            let state = reactive(obj)
+            let doubleCount = computed(() => state.count * 2)
+
+            effect(() => {
+                app.innerHTML = `
+                    <h3>${state.name}出现的次数为${state.count}, 乘以2为${doubleCount.value}</h3>
+                    <h3 style="color: blue;">${state.o.val}</h3>
+                `
+            })
+
+            addBtn.addEventListener('click', () => {
+                state.count += 1
+                state.o.val += 1
+            }, false)
+        </script>
+    </div>
 </body>
 </html>
