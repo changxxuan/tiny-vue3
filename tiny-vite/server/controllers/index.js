@@ -7,6 +7,9 @@ module.exports = {
         // 添加process变量，解决报错
         content = content.replace('<script', `
             <script>
+                //@todo
+                // 注入一个socket客户端
+                // 后端的文件变了，通知前端去更新(热更新)
                 window.process = {
                     env: {NODE_EV:'dev'}
                 }

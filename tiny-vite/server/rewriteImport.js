@@ -1,4 +1,4 @@
-// 目的是改造.js文件内容， 不是/ ./ ../开头的import，替换成/@modules/开头的
+// 重写.js文件内容， 不是/ ./ ../开头的import，替换成/@modules/开头的
 
 function rewriteImport() {
     return async (ctx, next) => {

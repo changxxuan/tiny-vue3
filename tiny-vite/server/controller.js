@@ -6,7 +6,11 @@ function addMapping(router, mapping) {
     for (var url in mapping) {
         if (url.startsWith('GET ')) {
             var path = url.substring(4);
-            router.get(path, mapping[url]);
+            if(path.match(/\/(\S+)\/g/g)){
+                router.get(eval(path), mapping[url]);
+            }else{
+                router.get(path, mapping[url]);
+            }
             console.log(`register URL mapping: GET ${path}`);
         } else if (url.startsWith('POST ')) {
             var path = url.substring(5);
